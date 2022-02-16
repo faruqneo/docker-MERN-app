@@ -1,0 +1,28 @@
+{
+  "name": "docker-node-container",
+  "version": "1.0.0",
+  "description": "it is my first docker app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faruqneo/docker-node-container.git"
+  },
+  "author": "Faruq Khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faruqneo/docker-node-container/issues"
+  },
+  "homepage": "https://github.com/faruqneo/docker-node-container#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
