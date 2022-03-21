@@ -1,20 +1,37 @@
 version: '3.9'
 services:
-  react-docker-client:
+  nginx:
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "3050:80"
+
+  client:
     image: neofaruq/react-docker-client:1.0.0
     restart: always
-    build: ./client/
+    build:
+      dockerfile: Dockerfile
+      context: ./client/
     stdin_open: true
     ports:
       - "3000:3000"
-  node-docker-server:
+
+  api:
     image: neofaruq/node-docker-server:1.0.0
     restart: always
-    build: ./server/
+    build:
+      dockerfile: Dockerfile
+      context: ./server/
     ports:
       - "8000:8000"
     depends_on:
       - mongo
+
   mongo: 
     image: mongo
     restart: always
@@ -22,6 +39,7 @@ services:
       - "27017:27017"
     volumes:  
       - mongo-data:/data/db
+      
 volumes:
   mongo-data: 
     driver: local
